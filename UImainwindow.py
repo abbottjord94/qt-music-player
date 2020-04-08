@@ -1,0 +1,118 @@
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file '/home/jordan/Desktop/qt-music-player/mainwindow.ui'
+#
+# Created by: PyQt5 UI code generator 5.14.0
+#
+# WARNING! All changes made in this file will be lost!
+
+
+from PyQt5 import QtCore, QtGui, QtWidgets
+
+
+class Ui_MainWindow(object):
+    def setupUi(self, MainWindow):
+        MainWindow.setObjectName("MainWindow")
+        MainWindow.resize(388, 246)
+        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setObjectName("centralwidget")
+        self.label_4 = QtWidgets.QLabel(self.centralwidget)
+        self.label_4.setGeometry(QtCore.QRect(10, 120, 54, 17))
+        self.label_4.setObjectName("label_4")
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        self.label.setGeometry(QtCore.QRect(290, 80, 54, 17))
+        self.label.setObjectName("label")
+        self.search = QtWidgets.QLineEdit(self.centralwidget)
+        self.search.setGeometry(QtCore.QRect(10, 30, 231, 29))
+        self.search.setObjectName("search")
+        self.playlist_UI = QtWidgets.QListWidget(self.centralwidget)
+        self.playlist_UI.setGeometry(QtCore.QRect(10, 140, 231, 51))
+        self.playlist_UI.setObjectName("playlist_UI")
+        self.progressSlider = QtWidgets.QSlider(self.centralwidget)
+        self.progressSlider.setGeometry(QtCore.QRect(10, 90, 231, 17))
+        self.progressSlider.setSliderPosition(0)
+        self.progressSlider.setOrientation(QtCore.Qt.Horizontal)
+        self.progressSlider.setObjectName("progressSlider")
+        self.skipPrev = QtWidgets.QPushButton(self.centralwidget)
+        self.skipPrev.setGeometry(QtCore.QRect(260, 110, 31, 29))
+        self.skipPrev.setObjectName("skipPrev")
+        self.volumeSlider = QtWidgets.QSlider(self.centralwidget)
+        self.volumeSlider.setGeometry(QtCore.QRect(260, 90, 111, 20))
+        self.volumeSlider.setOrientation(QtCore.Qt.Horizontal)
+        self.volumeSlider.setObjectName("volumeSlider")
+        self.playButton = QtWidgets.QPushButton(self.centralwidget)
+        self.playButton.setGeometry(QtCore.QRect(290, 110, 51, 29))
+        self.playButton.setObjectName("playButton")
+        self.label_2 = QtWidgets.QLabel(self.centralwidget)
+        self.label_2.setGeometry(QtCore.QRect(10, 70, 54, 17))
+        self.label_2.setObjectName("label_2")
+        self.skipNext = QtWidgets.QPushButton(self.centralwidget)
+        self.skipNext.setGeometry(QtCore.QRect(340, 110, 31, 29))
+        self.skipNext.setObjectName("skipNext")
+        self.searchButton = QtWidgets.QPushButton(self.centralwidget)
+        self.searchButton.setGeometry(QtCore.QRect(250, 30, 87, 29))
+        self.searchButton.setObjectName("searchButton")
+        self.label_3 = QtWidgets.QLabel(self.centralwidget)
+        self.label_3.setGeometry(QtCore.QRect(10, 10, 54, 17))
+        self.label_3.setObjectName("label_3")
+        MainWindow.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(MainWindow)
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 388, 23))
+        self.menubar.setObjectName("menubar")
+        self.menuFile = QtWidgets.QMenu(self.menubar)
+        self.menuFile.setObjectName("menuFile")
+        self.menuHelp = QtWidgets.QMenu(self.menubar)
+        self.menuHelp.setObjectName("menuHelp")
+        MainWindow.setMenuBar(self.menubar)
+        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        self.statusbar.setObjectName("statusbar")
+        MainWindow.setStatusBar(self.statusbar)
+        self.actionOpen_File = QtWidgets.QAction(MainWindow)
+        self.actionOpen_File.setObjectName("actionOpen_File")
+        self.actionOpen_Playlist = QtWidgets.QAction(MainWindow)
+        self.actionOpen_Playlist.setObjectName("actionOpen_Playlist")
+        self.actionSave_Playlist = QtWidgets.QAction(MainWindow)
+        self.actionSave_Playlist.setObjectName("actionSave_Playlist")
+        self.actionClose = QtWidgets.QAction(MainWindow)
+        self.actionClose.setObjectName("actionClose")
+        self.actionAbout = QtWidgets.QAction(MainWindow)
+        self.actionAbout.setObjectName("actionAbout")
+        self.menuFile.addAction(self.actionOpen_File)
+        self.menuFile.addAction(self.actionOpen_Playlist)
+        self.menuFile.addAction(self.actionSave_Playlist)
+        self.menuFile.addAction(self.actionClose)
+        self.menuHelp.addAction(self.actionAbout)
+        self.menubar.addAction(self.menuFile.menuAction())
+        self.menubar.addAction(self.menuHelp.menuAction())
+
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+    def retranslateUi(self, MainWindow):
+        _translate = QtCore.QCoreApplication.translate
+        MainWindow.setWindowTitle(_translate("MainWindow", "QtMusicPlayer"))
+        self.label_4.setText(_translate("MainWindow", "Playlist"))
+        self.label.setText(_translate("MainWindow", "Volume"))
+        self.skipPrev.setText(_translate("MainWindow", "<"))
+        self.playButton.setText(_translate("MainWindow", "Play"))
+        self.label_2.setText(_translate("MainWindow", "Progress"))
+        self.skipNext.setText(_translate("MainWindow", ">"))
+        self.searchButton.setText(_translate("MainWindow", "Search"))
+        self.label_3.setText(_translate("MainWindow", "Search:"))
+        self.menuFile.setTitle(_translate("MainWindow", "File"))
+        self.menuHelp.setTitle(_translate("MainWindow", "Help"))
+        self.actionOpen_File.setText(_translate("MainWindow", "Open File"))
+        self.actionOpen_Playlist.setText(_translate("MainWindow", "Open Playlist"))
+        self.actionSave_Playlist.setText(_translate("MainWindow", "Save Playlist"))
+        self.actionClose.setText(_translate("MainWindow", "Close"))
+        self.actionAbout.setText(_translate("MainWindow", "About"))
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    MainWindow = QtWidgets.QMainWindow()
+    ui = Ui_MainWindow()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
+    sys.exit(app.exec_())
