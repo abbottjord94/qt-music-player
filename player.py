@@ -4,9 +4,12 @@
 import os
 import sys
 import threading
+import requests
+import json
+import youtube_dl
 from PyQt5 import QtCore, QtWidgets, QtGui
 from PyQt5.QtCore import QUrl, QFileInfo
-from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog
+from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox
 from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent, QMediaPlaylist
 from UImainwindow import Ui_MainWindow
 
@@ -16,6 +19,7 @@ class MyFirstGuiProgram(QMainWindow, Ui_MainWindow):
         player = QMediaPlayer()
         playlist = QMediaPlaylist()
         playing = False
+        api_key = ""
 
         def __init__(self):
             super(MyFirstGuiProgram,self).__init__()
@@ -33,10 +37,15 @@ class MyFirstGuiProgram(QMainWindow, Ui_MainWindow):
             self.player.error.connect(self.player_error)
             self.player.durationChanged.connect(self.setMax)
             self.player.positionChanged.connect(self.moveSlider)
+            self.searchButton.clicked.connect(self.search_youtube)
 
             self.thread = threading.Thread(target=self.play_counter)
             self.thread.start()
             self.player.setPlaylist(self.playlist)
+
+            with open("key.file") as key_file:
+                self.api_key = key_file.read()
+                print(self.api_key)
 
         def setMax(self,duration):
             print("DurationChanged: ", duration)
@@ -92,8 +101,22 @@ class MyFirstGuiProgram(QMainWindow, Ui_MainWindow):
             else:
                 self.playlist.next()
 
-        def search(self):
-            pass
+        def search_youtube(self):
+            req_string = "https://www.googleapis.com/youtube/v3/search?part=snippet&key=" + self.api_key + "?q=" + self.searchBox.text()
+            data = requests.get(req_string).json()
+            print(data)
+            if data.get("items"):
+                results = data.get("items")
+                self.vid_id = results[0].get("videoId")
+                opt_str = '-o ' + vid_id + '.mp4'
+                with youtube_dl.YoutubeDL({"options": opt_str, "progress_hooks":[self.downloadFinished]}) as ydl:
+                    ydl.download(['https://www.youtube.com/watch?v=' + vid_id])
+            else:
+                    errormessage = QMessageBox.about(self, "Error", "Error in YouTube search")
+
+        def downloadFinished(self,d):
+            if(d['status'] == 'finished'):
+                self.open_files([self.vid_id + '.mp4'])
 
         def volumeSliderChanged(self):
             self.player.setVolume(self.volumeSlider.value())

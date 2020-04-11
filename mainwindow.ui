@@ -40,7 +40,7 @@
      <string>Volume</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="search">
+   <widget class="QLineEdit" name="searchBox">
     <property name="geometry">
      <rect>
       <x>10</x>
